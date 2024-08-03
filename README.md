@@ -11,7 +11,7 @@
 | last_name          | string | null: false |
 | first_name_kana    | string | null: false |
 | last_name_kana     | string | null: false |
-| birthday           | data   | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 
@@ -28,9 +28,8 @@
 | condition           | integer    | null: false |
 | shipping_fee_burden | integer    | null: false |
 | prefecture          | integer    | null: false |
-| shipping_days       | integer    | null: false |
+| shipping_day        | integer    | null: false |
 | price               | integer    | null: false |
-| image               | string     | null: false |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
