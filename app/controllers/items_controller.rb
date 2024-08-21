@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new
+      render :new # 保存に失敗した場合、new テンプレートをレンダリング
     end
   end
 
