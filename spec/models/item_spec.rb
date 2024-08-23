@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  before do 
+  before do
     @item = FactoryBot.build(:item)
   end
 
@@ -86,19 +86,18 @@ RSpec.describe Item, type: :model do
       it 'priceが300円未満の場合は登録できない' do
         @item.price = 200
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be a number between ¥300 and ¥9,999,999")
+        expect(@item.errors.full_messages).to include('Price must be a number between ¥300 and ¥9,999,999')
       end
       it 'priceが9,999,999円を超える場合は登録できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be a number between ¥300 and ¥9,999,999")
+        expect(@item.errors.full_messages).to include('Price must be a number between ¥300 and ¥9,999,999')
       end
       it 'priceが非数値の場合は登録できない' do
         @item.price = 'abc'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be a number between ¥300 and ¥9,999,999")
+        expect(@item.errors.full_messages).to include('Price must be a number between ¥300 and ¥9,999,999')
       end
     end
   end
 end
-

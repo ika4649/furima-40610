@@ -53,7 +53,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
-      it "重複したemailが存在する場合は登録できない" do
+      it '重複したemailが存在する場合は登録できない' do
         @user.save
         another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
@@ -110,10 +110,10 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name は全角（漢字・ひらがな・カタカナ）で入力してください')
       end
-      it "first_name_kanaが全角（カタカナ）以外では登録できない" do
+      it 'first_name_kanaが全角（カタカナ）以外では登録できない' do
         @user.first_name_kana = 'たなか'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana は全角カタカナで入力してください")
+        expect(@user.errors.full_messages).to include('First name kana は全角カタカナで入力してください')
       end
       it 'last_name_kanaが全角（カタカナ）以外では登録できない' do
         @user.last_name_kana = 'けんじ'
