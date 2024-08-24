@@ -1,4 +1,7 @@
-window.addEventListener('load', () => {
+document.addEventListener('turbo:load', priceCalculation);
+document.addEventListener('turbo:render',priceCalculation);
+
+function priceCalculation(){
   // 価格入力フィールドの要素を取得
   const priceInput = document.getElementById('item-price');
   
@@ -15,10 +18,10 @@ window.addEventListener('load', () => {
     const tax = Math.floor(price * 0.1);
     
     // 利益の計算
-    const profit = price - tax;
+    const profit = Math.floor(price - tax);
 
     // 手数料と利益の表示を更新
     addTaxDom.innerHTML = tax;
     profitDom.innerHTML = profit;
   });
-});
+}
