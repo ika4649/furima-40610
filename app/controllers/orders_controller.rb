@@ -17,7 +17,10 @@ class OrdersController < ApplicationController
   private
 
   def set_item
-    @item = Item.find(params[:item_id])
+    @item = Item.find_by(params[:item_id])
+    unless @item
+      redirect_to root_path
+    end
   end
 
   def order_params
