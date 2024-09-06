@@ -17,9 +17,10 @@ class OrdersController < ApplicationController
   private
 
   def set_item
-    @item = Item.find_by(params[:item_id])
+    @item = Item.find_by(id: params[:item_id])
     unless @item
       redirect_to root_path
+      return # ここでアクションを終了させる
     end
   end
 
