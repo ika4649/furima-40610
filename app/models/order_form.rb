@@ -1,6 +1,6 @@
 class OrderForm
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :purchase_record_id
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number, :purchase_record_id, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,6 +10,7 @@ class OrderForm
     validates :city
     validates :address
     validates :phone_number,   format: { with: /\A\d{10,11}\z/, message: "must be 10 or 11 digits without hyphens" }
+    validates :token
   end
 
   def save
