@@ -61,12 +61,12 @@ RSpec.describe OrderForm, type: :model do
       it 'postal_codeが3桁ハイフン4桁の半角文字列以外では登録できない' do
         @order_form.postal_code = '1234567'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Postal code must be in the format 123-4567")
+        expect(@order_form.errors.full_messages).to include('Postal code must be in the format 123-4567')
       end
       it 'phone_numberが10桁以上11桁以内の半角数値以外では登録できない' do
         @order_form.phone_number = '090-1234-5678'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Phone number must be 10 or 11 digits without hyphens")
+        expect(@order_form.errors.full_messages).to include('Phone number must be 10 or 11 digits without hyphens')
       end
       it 'prefecture_idが1の場合は登録できない' do
         @order_form.prefecture_id = '1'
