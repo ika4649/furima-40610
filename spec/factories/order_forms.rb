@@ -8,5 +8,6 @@ FactoryBot.define do
     address{ Faker::Address.street_address }
     building_name{ Faker::Address.secondary_address }
     phone_number{ Faker::PhoneNumber.subscriber_number(length: 10) } # 10桁の電話番号
+    token {"tok_abcdefghijk00000000000000000"}
   end
 end  
