@@ -23,9 +23,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return unless current_user.id != @item.user_id
-
-    redirect_to root_path
+    # 売却済みの商品であればトップページにリダイレクト
+    redirect_to root_path if @item.purchase_record.present?
+    # アイテムのオーナーでない場合にリダイレクト
+    redirect_to root_path unless current_user.id == @item.user_id
   end
 
   def update
