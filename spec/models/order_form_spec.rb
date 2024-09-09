@@ -68,6 +68,16 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Phone number must be 10 or 11 digits without hyphens')
       end
+      it 'phone_numberが9桁以下では登録できない' do
+        @order_form.phone_number = '123456789'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Phone number must be 10 or 11 digits without hyphens')
+      end
+      it 'phone_numberが12桁以上では登録できない' do
+        @order_form.phone_number = '123456789012'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Phone number must be 10 or 11 digits without hyphens')
+      end
       it 'prefecture_idが1の場合は登録できない' do
         @order_form.prefecture_id = '1'
         @order_form.valid?

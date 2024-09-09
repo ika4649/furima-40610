@@ -10,8 +10,9 @@ class OrdersController < ApplicationController
 
   def create
     @order_form = OrderForm.new(order_params)
-    if @order_form.save
+    if @order_form.valid?
       pay_item
+      @order_form.save
       redirect_to root_path
     else
       gon.public_key = ENV['PAYJP_PUBLIC_KEY']
